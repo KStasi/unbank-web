@@ -7,17 +7,6 @@ import Badge from "@mui/material/Badge";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-// TODO: move to utils
-function shortenAddress(str) {
-  if (str.length <= 12) {
-    return str;
-  }
-
-  const start = str.slice(0, 7);
-  const end = str.slice(-5);
-
-  return start + "..." + end;
-}
 
 function Autopayment({ id, type, from, to, amount, symbol, period }) {
   return (

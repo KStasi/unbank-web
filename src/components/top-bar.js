@@ -6,8 +6,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import shortifyAddress from "../utils/shortify-address";
+import Stack from "@mui/material/Stack";
 
-function TopBar() {
+function TopBar({ onDisconnect, onLogin, address }) {
+  console.log(address);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="transparent" variant="outlined">
@@ -24,9 +27,20 @@ function TopBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Unb@nk
           </Typography>
-          <Button color="inherit" variant="outlined">
-            Connect
-          </Button>
+          {address ? (
+            <Stack direction="row" spacing={1}>
+              <Button color="inherit" variant="outlined">
+                {shortifyAddress(address)}
+              </Button>
+              <Button color="inherit" variant="outlined" onClick={onDisconnect}>
+                Disconnect
+              </Button>
+            </Stack>
+          ) : (
+            <Button color="inherit" variant="outlined" onClick={onLogin}>
+              Connect
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

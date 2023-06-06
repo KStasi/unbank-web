@@ -7,17 +7,7 @@ import Badge from "@mui/material/Badge";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-// TODO: move to utils
-function shortenAddress(str) {
-  if (str.length <= 12) {
-    return str;
-  }
-
-  const start = str.slice(0, 7);
-  const end = str.slice(-5);
-
-  return start + "..." + end;
-}
+import shortifyAddress from "../utils/shortify-address";
 
 function Card({
   id,
@@ -60,7 +50,7 @@ function Card({
                 Address:
               </Typography>
               <Typography variant="subtitle2" component="div">
-                {shortenAddress(address)}
+                {shortifyAddress(address)}
               </Typography>
             </Stack>
             {type.toLowerCase() === "debit" ? (

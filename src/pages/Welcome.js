@@ -4,8 +4,13 @@ import WelcomeContainer from "../layout/welcome-container";
 import WelcomeHeader from "../components/welcome-header";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import UserPage from "./User";
 
-function WelcomePage({}) {
+function WelcomePage({ setRole }) {
+  const setUserRole = () => {
+    setRole("user");
+  };
+
   return (
     <WelcomeContainer>
       <Stack direction="column" spacing={0}>
@@ -51,7 +56,7 @@ function WelcomePage({}) {
             <Typography variant="h1" align="center" sx={{ fontSize: "150px" }}>
               🦊
             </Typography>
-            <Button color="warning" variant="outlined">
+            <Button color="warning" variant="outlined" onClick={setUserRole}>
               Relaxing Fox
             </Button>
           </Grid>

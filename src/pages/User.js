@@ -7,7 +7,7 @@ import TopBar from "../components/top-bar";
 import Card from "../components/card";
 import Autopayment from "../components/autopayment";
 
-function UserPage({}) {
+function UserPage({ onDisconnect, onLogin, address }) {
   const cards = [
     {
       id: "1",
@@ -81,7 +81,11 @@ function UserPage({}) {
   return (
     <WelcomeContainer>
       <Stack direction="column" spacing={0}>
-        <TopBar />
+        <TopBar
+          onDisconnect={onDisconnect}
+          onLogin={onLogin}
+          address={address}
+        />
         <Grid container spacing={0} direction="row">
           <Grid
             item
