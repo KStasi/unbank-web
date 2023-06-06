@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { initVenomConnect } from "./providers/venom-provider";
 import Main from "./pages/Main";
 import WelcomePage from "./pages/Welcome";
+import UserPage from "./pages/User";
 
 function App() {
   const [venomConnect, setVenomConnect] = useState();
@@ -15,7 +16,7 @@ function App() {
   useEffect(() => {
     init();
   }, []);
-  return <WelcomePage venomConnect={venomConnect} />;
+  return <UserPage venomConnect={venomConnect} />;
   // return <Main venomConnect={venomConnect} />;
 }
 
