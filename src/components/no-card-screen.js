@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import AddCardModal from "../modals/add-card";
 
 function NoCardScreen({}) {
   return (
