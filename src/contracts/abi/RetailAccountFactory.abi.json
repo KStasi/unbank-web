@@ -1,0 +1,144 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"code","type":"cell"},
+				{"name":"cardsRegistry","type":"address"},
+				{"name":"bank","type":"address"},
+				{"name":"requestsRegistry","type":"address"},
+				{"name":"managerCollection","type":"address"},
+				{"name":"initialAmount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployRetailAccount",
+			"inputs": [
+				{"name":"pubkey","type":"optional(uint128)"},
+				{"name":"owner","type":"optional(address)"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "setCardsRegistry",
+			"inputs": [
+				{"name":"cardsRegistry","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setBank",
+			"inputs": [
+				{"name":"bank","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setManagerCollection",
+			"inputs": [
+				{"name":"managerCollection","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setInitialAmount",
+			"inputs": [
+				{"name":"initialAmount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setAccountCode",
+			"inputs": [
+				{"name":"accountCode","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "retailAccountAddress",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"pubkey","type":"optional(uint128)"},
+				{"name":"owner","type":"optional(address)"}
+			],
+			"outputs": [
+				{"name":"retailAccount","type":"address"}
+			]
+		},
+		{
+			"name": "_accountCode",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_accountCode","type":"cell"}
+			]
+		},
+		{
+			"name": "_cardsRegistry",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_cardsRegistry","type":"address"}
+			]
+		},
+		{
+			"name": "_bank",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_bank","type":"address"}
+			]
+		},
+		{
+			"name": "_managerCollection",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_managerCollection","type":"address"}
+			]
+		},
+		{
+			"name": "_initialAmount",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_initialAmount","type":"uint128"}
+			]
+		},
+		{
+			"name": "_requestsRegistry",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_requestsRegistry","type":"address"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"_accountCode","type":"cell"},
+		{"name":"_cardsRegistry","type":"address"},
+		{"name":"_bank","type":"address"},
+		{"name":"_managerCollection","type":"address"},
+		{"name":"_initialAmount","type":"uint128"},
+		{"name":"_requestsRegistry","type":"address"}
+	]
+}

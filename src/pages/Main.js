@@ -69,6 +69,7 @@ function MainPage({ venomConnect }) {
             onLogin={onLogin}
             onDisconnect={onDisconnect}
             address={address}
+            venomConnect={venomConnect}
           />
         )
       ) : (

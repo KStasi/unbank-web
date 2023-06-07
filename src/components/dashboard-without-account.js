@@ -30,7 +30,7 @@ function DashboardWithoutAccount({}) {
         <br />
         have any account yet
       </Typography>
-      <Button variant="outlined" color="secondary" sx={{}}>
+      <Button variant="outlined" color="inherit" sx={{}}>
         Request Account Now ❤️
       </Button>
     </Grid>

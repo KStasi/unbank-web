@@ -10,7 +10,6 @@ import shortifyAddress from "../utils/shortify-address";
 import Stack from "@mui/material/Stack";
 
 function TopBar({ onDisconnect, onLogin, address }) {
-  console.log(address);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="transparent" variant="outlined">
