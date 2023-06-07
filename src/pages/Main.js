@@ -42,7 +42,7 @@ function MainPage({ venomConnect }) {
     venomProvider?.disconnect();
     setAddress(undefined);
   };
-  // When our provider is ready, we need to get address and balance from.
+
   const onProviderReady = async (provider) => {
     const venomWalletAddress = provider
       ? await getAddress(provider)
@@ -51,13 +51,11 @@ function MainPage({ venomConnect }) {
   };
 
   useEffect(() => {
-    // connect event handler
     const off = venomConnect?.on("connect", onConnect);
     if (venomConnect) {
       initStandalone();
       checkAuth(venomConnect);
     }
-    // just an empty callback, cuz we don't need it
     return () => {
       off?.();
     };
