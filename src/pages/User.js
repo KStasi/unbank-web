@@ -18,7 +18,7 @@ function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
   );
 
   return (
-    <WelcomeContainer>
+    <>
       <Stack direction="column" spacing={0}>
         <TopBar
           onDisconnect={onDisconnect}
@@ -34,7 +34,7 @@ function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
           <DashboardWithoutAccount address={{ address }} />
         )}
       </Stack>
-    </WelcomeContainer>
+    </>
   );
 }
 

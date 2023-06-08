@@ -1,20 +1,20 @@
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+// import Container from "@mui/material/Container";
 
 function WelcomeContainer({ children }) {
   return (
-    <Box
+    <Grid
+      container
+      spacing={0}
       component="main"
       sx={{
         backgroundColor: "#fafafa",
-        // flexGrow: 1,
+        display: "flex",
         height: "100vh",
-        overflow: "auto",
-        // display: "flex",
       }}
     >
       {children}
-    </Box>
+    </Grid>
   );
 }
 

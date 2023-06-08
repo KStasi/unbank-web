@@ -62,7 +62,7 @@ function MainPage({ venomConnect }) {
   }, [venomConnect]);
 
   return (
-    <WelcomeContainer>
+    <>
       {role ? (
         role == "user" && (
           <UserPage
@@ -75,7 +75,7 @@ function MainPage({ venomConnect }) {
       ) : (
         <WelcomePage setRole={setRole} />
       )}
-    </WelcomeContainer>
+    </>
   );
 }
 
