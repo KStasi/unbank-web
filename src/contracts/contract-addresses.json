@@ -4,13 +4,15 @@
     "ChiefManager1": "0:25de43ce31e09ab667628049b541e3a4b285a23f3e2c446c35f5af891fecfc42",
     "Manager1": "0:cc0b13c55a8901fd1ed9332be3f6d925cfd309f1997ef3724467680c39342822",
     "RetailAccount1": "0:3c59abd8235cf0554bb8d315b765e4d329bcb95dedbbd1943b545d86ac6896fb",
-    "CBDC1": "0:d90b39c03a238b392ca660d42eadf3d05d7ac4cb963dd0906380f1f9d16394f6",
-    "ShareTokenRoot": "0:3eb6a3a2bb6686d8e5de292e8e705c1529e2b0ead2b459edf59a86ebfdb2fbf6",
-    "ChiefManagerCollection": "0:4a41edf765ba0c6aac2bde0697feb99fb068eed84225933c910f52232e1f12ca",
-    "ManagerCollection": "0:e6d197baf1fa3a89a3f7aea2b8dcab2bf149bbd6481936743b6dd3b67f1d7474",
-    "CardsRegistry": "0:40480b1a970023746abe9fb236875ff96eb5b91f88a596de81d7143711367edf",
-    "RequestsRegistry": "0:d235183a5bf2cd1a4e16e758cbdd660f73437c294fc35c6f5d592cef605e50d3",
-    "Bank": "0:e2684941092b5b697dba59a599a648bc15a5bc82e0e839396b21657e79cc9a37",
-    "RetailAccountFactory": "0:8b7ed9bab4f407c27dbd5e4a9796806eab09cdf14a5f9e95f883da0200c1aaae"
+    "CBDC1": "0:e2136a92cc05f9a860cddf55bc01f96e904891905fcc1b0dfcb9aa768d6abe31",
+    "CBDC2": "0:ca082f2170a3cf1be7985a57f1817a4fbf65b5097ddec91fd786a8b9fde0d1a8",
+    "CBDC3": "0:e4354e08c6b20ba548a3a34f0eb479d0a6a7b66788fd0879cf75e922525689d8",
+    "ShareTokenRoot": "0:4bf676c27d43d62aa76c488d6a41c32d13eaa14f8008add19a3ff79c466619dd",
+    "ChiefManagerCollection": "0:b946df6f3d87f237e6cb409a16b407b740c64e71016e1d3f3c5e080b1a23d9ed",
+    "ManagerCollection": "0:33d08dbabd7e57d73f31480acd71c801d627d275370ca7af54110a03ccde6e0a",
+    "CardsRegistry": "0:d5e79c9aaddb68a51787905800bf842c668bf3ac74bf540468632bf7a94fc914",
+    "RequestsRegistry": "0:013b63154e424697072f9196491972551cc52bcfa52d22f70b6d566cc67e1e89",
+    "Bank": "0:eface0e35d38ec8b6d5479e4b3f1d5320b71d4be45cf8905eca1a6daf026b748",
+    "RetailAccountFactory": "0:64777fa06a0c6ab789c5173c27bca0444accf794f94262b8ed84e40b9d33ca4d"
   }
 }

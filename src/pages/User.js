@@ -31,7 +31,7 @@ function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
             venomConnect={venomConnect}
           />
         ) : (
-          <DashboardWithoutAccount />
+          <DashboardWithoutAccount address={{ address }} />
         )}
       </Stack>
     </WelcomeContainer>

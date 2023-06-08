@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Card from "../components/card";
-import Autopayment from "../components/autopayment";
+import LoadingButton from "@mui/lab/LoadingButton";
+import postCreateAccount from "../api/post-create-account";
 
-function DashboardWithoutAccount({}) {
+function DashboardWithoutAccount({ address }) {
+  const [loading, setLoading] = useState(false);
+
+  function handleClick() {
+    postCreateAccount(address);
+    setLoading(true);
+  }
+
   return (
     <Grid
       container
@@ -13,8 +20,6 @@ function DashboardWithoutAccount({}) {
       direction="column"
       spacing={1}
       sx={{
-        // backgroundColor: "#042f22",
-        // height: "100vh",
         width: "100%",
         align: "center",
         alignContent: "center",
@@ -30,9 +35,14 @@ function DashboardWithoutAccount({}) {
         <br />
         have any account yet
       </Typography>
-      <Button variant="outlined" color="inherit" sx={{}}>
+      <LoadingButton
+        onClick={handleClick}
+        loading={loading}
+        variant="outlined"
+        color="inherit"
+      >
         Request Account Now ❤️
-      </Button>
+      </LoadingButton>
     </Grid>
   );
 }

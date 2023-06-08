@@ -5,14 +5,7 @@ import tokenWalletAbi from "../contracts/abi/TokenWallet.abi.json";
 import getTokenMetadata from "./get-token-metadata";
 import BigNumber from "bignumber.js";
 import toTokenAmount from "../utils/to-token-amount";
-export const NETWORK = "devnet";
-
-export const CARD_TYPES = {
-  1: "Debit",
-  2: "Saving",
-};
-
-const DEFAULT_ANSWER_ID = 0;
+import { CARD_TYPES, DEFAULT_ANSWER_ID } from "../constants";
 
 const getCardDetails = async (provider, cardAddress) => {
   const cardContract = new provider.Contract(baseCardAbi, cardAddress);
@@ -45,7 +38,7 @@ const getCardDetails = async (provider, cardAddress) => {
   };
   console.log("cardType", cardType);
   switch (cardType) {
-    case "1": {
+    case "0": {
       const cardWithLimitsContract = new provider.Contract(
         cardWithLimitsAbi,
         cardAddress
@@ -67,7 +60,7 @@ const getCardDetails = async (provider, cardAddress) => {
       );
       break;
     }
-    case "2": {
+    case "1": {
       const savingCardContract = new provider.Contract(
         savingCardAbi,
         cardAddress
