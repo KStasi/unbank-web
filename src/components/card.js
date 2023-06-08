@@ -22,19 +22,6 @@ function Card({
   isActive,
   wallet,
 }) {
-  console.log(
-    name,
-    cardType,
-    address,
-    balance,
-    currencyMetadata,
-    dailyLimit,
-    monthlyLimit,
-    targetAmount,
-    amountLeft,
-    isActive,
-    wallet
-  );
   return (
     <Badge
       badgeContent={""}

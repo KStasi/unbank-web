@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import shortifyAddress from "../utils/shortify-address";
 import Stack from "@mui/material/Stack";
 import logo2 from "../assets/logo2.svg";
+import Hidden from "@mui/material/Hidden";
 
 function TopBar({ onDisconnect, onLogin, address }) {
   return (
@@ -37,9 +38,11 @@ function TopBar({ onDisconnect, onLogin, address }) {
           </Typography>
           {address ? (
             <Stack direction="row" spacing={1}>
-              <Button color="inherit" variant="outlined">
-                {shortifyAddress(address)}
-              </Button>
+              <Hidden smDown>
+                <Button color="inherit" variant="outlined">
+                  {shortifyAddress(address)}
+                </Button>
+              </Hidden>
               <Button color="inherit" variant="outlined" onClick={onDisconnect}>
                 Disconnect
               </Button>

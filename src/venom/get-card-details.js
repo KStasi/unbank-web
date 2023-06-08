@@ -36,7 +36,6 @@ const getCardDetails = async (provider, cardAddress) => {
     frozenBalance: toTokenAmount(frozenBalance, currencyMetadata.decimals),
     currencyMetadata,
   };
-  console.log("cardType", cardType);
   switch (cardType) {
     case "0": {
       const cardWithLimitsContract = new provider.Contract(
@@ -46,7 +45,6 @@ const getCardDetails = async (provider, cardAddress) => {
       const dailyLimit = (
         await cardWithLimitsContract.methods._dailyLimit({}).call()
       )._dailyLimit;
-      console.log("dailyLimit", dailyLimit);
       const monthlyLimit = (
         await cardWithLimitsContract.methods._monthlyLimit({}).call()
       )._monthlyLimit;

@@ -3,8 +3,20 @@ import { Stack, Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Card from "../components/card";
+import AddCardModal from "../modals/add-card";
+import useCurrencies from "../hooks/use-currencies";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-function CardsScreen({ cards }) {
+function CardsScreen({ cards, venomConnect }) {
+  const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
+  const handleAddCardModalOpen = () => {
+    setAddCardModalOpenned(true);
+  };
+  const handleAddCardModalClose = () => {
+    setAddCardModalOpenned(false);
+  };
+
+  const { currencies } = useCurrencies(venomConnect);
   return (
     <Grid
       item
@@ -51,20 +63,21 @@ function CardsScreen({ cards }) {
         ))}
       </Grid>
       <br />
-      <Grid
-        item
-        spacing={1}
-        xs={12}
-        md={8}
-        sx={
-          {
-            // width: "100%",
-          }
-        }
-      >
-        <Button variant="outlined" color="inherit" sx={{ width: "100%" }}>
+      <Grid item spacing={1} xs={12} md={8} sx={{}}>
+        <LoadingButton
+          variant="outlined"
+          color="inherit"
+          sx={{ width: "100%" }}
+          loading={addCardModalOpenned}
+          onClick={handleAddCardModalOpen}
+        >
           Add Card 🤑
-        </Button>
+        </LoadingButton>
+        <AddCardModal
+          open={addCardModalOpenned}
+          handleClose={handleAddCardModalClose}
+          currencies={currencies}
+        />
       </Grid>
     </Grid>
   );
