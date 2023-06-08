@@ -1,0 +1,177 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"cardsRegistry","type":"address"},
+				{"name":"bank","type":"address"},
+				{"name":"requestsRegistry","type":"address"},
+				{"name":"managerCollection","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addCard",
+			"inputs": [
+				{"name":"cardTypeId","type":"uint8"},
+				{"name":"cardType","type":"uint8"},
+				{"name":"currency","type":"address"},
+				{"name":"otherCardDetails","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onCardAdded",
+			"inputs": [
+				{"name":"newCard","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setCardActivation",
+			"inputs": [
+				{"name":"card","type":"address"},
+				{"name":"isActive","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setSpendingLimits",
+			"inputs": [
+				{"name":"card","type":"address"},
+				{"name":"dailyLimit","type":"uint128"},
+				{"name":"monthlyLimit","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "transferToBank",
+			"inputs": [
+				{"name":"card","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"payload","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setAccountActivation",
+			"inputs": [
+				{"name":"isActive","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendTransaction",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"},
+				{"name":"bounce","type":"bool"},
+				{"name":"flags","type":"uint8"},
+				{"name":"payload","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendBatch",
+			"inputs": [
+				{"components":[{"name":"dest","type":"address"},{"name":"value","type":"uint128"},{"name":"bounce","type":"bool"},{"name":"flags","type":"uint16"},{"name":"payload","type":"cell"}],"name":"transactions","type":"tuple[]"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "_ownerPublicKey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_ownerPublicKey","type":"optional(uint256)"}
+			]
+		},
+		{
+			"name": "_ownerAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_ownerAddress","type":"optional(address)"}
+			]
+		},
+		{
+			"name": "_cards",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_cards","type":"map(address,bool)"}
+			]
+		},
+		{
+			"name": "_isActive",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_isActive","type":"bool"}
+			]
+		},
+		{
+			"name": "_cardsRegistry",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_cardsRegistry","type":"address"}
+			]
+		},
+		{
+			"name": "_requestsRegistry",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_requestsRegistry","type":"address"}
+			]
+		},
+		{
+			"name": "_managerCollection",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_managerCollection","type":"address"}
+			]
+		},
+		{
+			"name": "_bank",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_bank","type":"address"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"_ownerPublicKey","type":"optional(uint256)"},
+		{"key":2,"name":"_ownerAddress","type":"optional(address)"}
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"_ownerPublicKey","type":"optional(uint256)"},
+		{"name":"_ownerAddress","type":"optional(address)"},
+		{"name":"_cards","type":"map(address,bool)"},
+		{"name":"_isActive","type":"bool"},
+		{"name":"_cardsRegistry","type":"address"},
+		{"name":"_requestsRegistry","type":"address"},
+		{"name":"_managerCollection","type":"address"},
+		{"name":"_bank","type":"address"}
+	]
+}

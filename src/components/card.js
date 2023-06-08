@@ -10,17 +10,31 @@ import Button from "@mui/material/Button";
 import shortifyAddress from "../utils/shortify-address";
 
 function Card({
-  id,
-  type,
+  name,
+  cardType,
   address,
   balance,
-  symbol,
+  currencyMetadata,
   dailyLimit,
   monthlyLimit,
   targetAmount,
+  amountLeft,
   isActive,
-  emoji,
+  wallet,
 }) {
+  console.log(
+    name,
+    cardType,
+    address,
+    balance,
+    currencyMetadata,
+    dailyLimit,
+    monthlyLimit,
+    targetAmount,
+    amountLeft,
+    isActive,
+    wallet
+  );
   return (
     <Badge
       badgeContent={""}
@@ -40,9 +54,9 @@ function Card({
         <Stack direction="column" spacing={2}>
           <Stack direction="row" spacing={2} justifyContent="space-between">
             <Typography variant="subtitle1" component="div">
-              Card {id}
+              {name}
             </Typography>
-            <Chip label={type.toUpperCase()} size="small" />
+            <Chip label={cardType.toUpperCase()} size="small" />
           </Stack>
           <div>
             <Stack direction="row" spacing={2} justifyContent="space-between">
@@ -53,7 +67,7 @@ function Card({
                 {shortifyAddress(address)}
               </Typography>
             </Stack>
-            {type.toLowerCase() === "debit" ? (
+            {cardType.toLowerCase() === "debit" ? (
               <>
                 <Stack
                   direction="row"
@@ -64,7 +78,7 @@ function Card({
                     Daily Limit:
                   </Typography>
                   <Typography variant="subtitle2" component="div">
-                    {dailyLimit} {symbol}
+                    {dailyLimit} {currencyMetadata.symbol}
                   </Typography>
                 </Stack>
                 <Stack
@@ -76,7 +90,7 @@ function Card({
                     Monthly Limit:
                   </Typography>
                   <Typography variant="subtitle2" component="div">
-                    {monthlyLimit} {symbol}
+                    {monthlyLimit} {currencyMetadata.symbol}
                   </Typography>
                 </Stack>
               </>
@@ -91,7 +105,7 @@ function Card({
                     Target Amount:
                   </Typography>
                   <Typography variant="subtitle2" component="div">
-                    {targetAmount} {symbol}
+                    {targetAmount} {currencyMetadata.symbol}
                   </Typography>
                 </Stack>
                 <Stack
@@ -103,8 +117,8 @@ function Card({
                     Left To Save:
                   </Typography>
                   <Typography variant="subtitle2" component="div">
-                    {balance < targetAmount ? targetAmount - balance : 0}{" "}
-                    {symbol}
+                    {amountLeft}
+                    {currencyMetadata.symbol}
                   </Typography>
                 </Stack>
               </>
@@ -118,7 +132,7 @@ function Card({
                 component="div"
                 sx={{ fontWeight: "bold" }}
               >
-                {balance} {symbol}
+                {balance} {currencyMetadata.symbol}
               </Typography>
               <Button
                 size="small"

@@ -8,58 +8,62 @@ import CardsScreen from "./cards-screen";
 import NoCardScreen from "./no-card-screen";
 import NoAutomaticPaymentScreen from "./no-automatic-payment-screen";
 import AutomaticPaymentScreen from "./automatic-payment-screen";
-function UserDashboard({}) {
-  const cards = [
-    {
-      id: "1",
-      type: "Debit",
-      emoji: "🍩",
-      address:
-        "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
-      balance: "1000,32",
-      symbol: "veUSD",
-      dailyLimit: "500",
-      monthlyLimit: "1000",
-    },
-    {
-      id: "2",
-      type: "Debit",
-      emoji: "🌰",
-      address:
-        "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
-      balance: "1000,32",
-      symbol: "veUSD",
-      dailyLimit: "500",
-      monthlyLimit: "1000",
-      isActive: true,
-    },
-    {
-      id: "3",
-      type: "Saving",
-      emoji: "🍿",
-      address:
-        "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
-      balance: 1000,
-      symbol: "veUSD",
-      dailyLimit: "500",
-      monthlyLimit: "1000",
-      targetAmount: 4000,
-      isActive: true,
-    },
-    {
-      id: "4",
-      type: "Saving",
-      emoji: "🍪",
-      address:
-        "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
-      balance: 1000.32,
-      symbol: "veUSD",
-      dailyLimit: "500",
-      monthlyLimit: "1000",
-      targetAmount: 800,
-      isActive: false,
-    },
-  ];
+import useCards from "../hooks/use-cards";
+
+function UserDashboard({ venomConnect, retailAccountAddress }) {
+  const { cards } = useCards(retailAccountAddress, venomConnect);
+  console.log("cards", cards);
+  //   const cards = [
+  //     {
+  //       id: "1",
+  //       type: "Debit",
+  //       emoji: "🍩",
+  //       address:
+  //         "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
+  //       balance: "1000,32",
+  //       symbol: "veUSD",
+  //       dailyLimit: "500",
+  //       monthlyLimit: "1000",
+  //     },
+  //     {
+  //       id: "2",
+  //       type: "Debit",
+  //       emoji: "🌰",
+  //       address:
+  //         "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
+  //       balance: "1000,32",
+  //       symbol: "veUSD",
+  //       dailyLimit: "500",
+  //       monthlyLimit: "1000",
+  //       isActive: true,
+  //     },
+  //     {
+  //       id: "3",
+  //       type: "Saving",
+  //       emoji: "🍿",
+  //       address:
+  //         "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
+  //       balance: 1000,
+  //       symbol: "veUSD",
+  //       dailyLimit: "500",
+  //       monthlyLimit: "1000",
+  //       targetAmount: 4000,
+  //       isActive: true,
+  //     },
+  //     {
+  //       id: "4",
+  //       type: "Saving",
+  //       emoji: "🍪",
+  //       address:
+  //         "0:5368ceef99d6ce85728bc9924d8ceed46b30441d3f9efaf42853a3a6af3d46d0",
+  //       balance: 1000.32,
+  //       symbol: "veUSD",
+  //       dailyLimit: "500",
+  //       monthlyLimit: "1000",
+  //       targetAmount: 800,
+  //       isActive: false,
+  //     },
+  //   ];
 
   const autopayments = [
     {

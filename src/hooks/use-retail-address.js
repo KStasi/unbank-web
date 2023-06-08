@@ -14,7 +14,6 @@ const useRetailAddress = (address, venomConnect) => {
   };
 
   useEffect(() => {
-    console.log("address");
     (async () => {
       const retailAccountAddressPrecalculated = await getRetailAccountAddress(
         venomConnect
