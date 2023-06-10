@@ -21,6 +21,7 @@ const useCards = (retailAccountAddress, venomConnect) => {
         return cardDetail;
       })
     );
+    console.log(cardDetails);
     setCards(cardDetails);
   };
 

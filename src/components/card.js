@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import shortifyAddress from "../utils/shortify-address";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendModal from "../modals/send";
+import postTopUp from "../api/post-top-up";
 
 function Card({
   name,
@@ -28,6 +29,10 @@ function Card({
   const [openSendModal, setOpenSendModal] = React.useState(false);
   const handleSendModalOpen = () => setOpenSendModal(true);
   const handleSendModalClose = () => setOpenSendModal(false);
+
+  function handleTopUp() {
+    postTopUp(address.toString(), currencyMetadata.address);
+  }
   return (
     <Badge
       badgeContent={""}
@@ -127,15 +132,27 @@ function Card({
               >
                 {balance} {currencyMetadata.symbol}
               </Typography>
-              <Button
-                size="small"
-                variant="contained"
-                color="inherit"
-                disableElevation="true"
-                onClick={handleSendModalOpen}
-              >
-                Send 👉
-              </Button>
+              {balance > 0 ? (
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="inherit"
+                  disableElevation="true"
+                  onClick={handleSendModalOpen}
+                >
+                  Send 👉
+                </Button>
+              ) : (
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="inherit"
+                  disableElevation="true"
+                  onClick={handleTopUp}
+                >
+                  Top Up 🦄
+                </Button>
+              )}
               <SendModal
                 open={openSendModal}
                 handleClose={handleSendModalClose}
