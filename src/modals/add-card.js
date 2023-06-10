@@ -13,7 +13,13 @@ import { CARD_TYPES } from "../constants";
 import LoadingButton from "@mui/lab/LoadingButton";
 import postCreateCard from "../api/post-create-card";
 
-function AddCardModal({ open, handleClose, currencies, retailAccountAddress }) {
+function AddCardModal({
+  open,
+  handleClose,
+  currencies,
+  retailAccountAddress,
+  onCardCreated,
+}) {
   const [cardName, setCardName] = useState("");
   const [cardType, setCardType] = useState(0);
   const [currency, setCurrency] = useState(0);
@@ -35,18 +41,13 @@ function AddCardModal({ open, handleClose, currencies, retailAccountAddress }) {
           currencies[currency] &&
           currencies[currency].address
         ) {
-          console.log(
-            retailAccountAddress.toString(),
-            cardType,
-            currencies[currency].address,
-            ""
-          );
           await postCreateCard(
             retailAccountAddress,
             cardType,
             currencies[currency].address,
             ""
           );
+          await onCardCreated();
           // TODO: process saving card
         }
       } catch (error) {

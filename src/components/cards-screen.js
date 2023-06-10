@@ -11,6 +11,7 @@ function CardsScreen({
   cards,
   venomConnect,
   retailAccountAddress,
+  onCardCreated,
   currencies,
 }) {
   const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
@@ -82,6 +83,7 @@ function CardsScreen({
           handleClose={handleAddCardModalClose}
           currencies={currencies}
           retailAccountAddress={retailAccountAddress}
+          onCardCreated={onCardCreated}
         />
       </Grid>
     </Grid>

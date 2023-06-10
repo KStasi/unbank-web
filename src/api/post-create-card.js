@@ -1,12 +1,12 @@
 import { AUTO_MANAGER_API } from "../constants";
 
-const postCreateCard = (
+const postCreateCard = async (
   retailAccountAddress,
   cardTypeId,
   currency,
   otherCardDetails
 ) => {
-  fetch(`${AUTO_MANAGER_API}/issue-card`, {
+  const response = await fetch(`${AUTO_MANAGER_API}/issue-card`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,10 +17,9 @@ const postCreateCard = (
       currency,
       otherCardDetails,
     }),
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error("Error:", error));
+  });
+  const data = await response.json();
+  return data;
 };
 
 export default postCreateCard;

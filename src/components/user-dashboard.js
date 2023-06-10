@@ -10,10 +10,13 @@ import NoAutomaticPaymentScreen from "./no-automatic-payment-screen";
 import AutomaticPaymentScreen from "./automatic-payment-screen";
 import useCards from "../hooks/use-cards";
 import useCurrencies from "../hooks/use-currencies";
+import useInterval from "../hooks/use-interval";
 
 function UserDashboard({ venomConnect, retailAccountAddress }) {
-  const { cards } = useCards(retailAccountAddress, venomConnect);
+  const { cards, onCardCreated } = useCards(retailAccountAddress, venomConnect);
   const { currencies } = useCurrencies(venomConnect);
+
+  useInterval(onCardCreated);
 
   const autopayments = [
     {
@@ -41,9 +44,11 @@ function UserDashboard({ venomConnect, retailAccountAddress }) {
           venomConnect={venomConnect}
           retailAccountAddress={retailAccountAddress}
           currencies={currencies}
+          onCardCreated={onCardCreated}
         />
       ) : (
         <NoCardScreen
+          onCardCreated={onCardCreated}
           retailAccountAddress={retailAccountAddress}
           currencies={currencies}
         />

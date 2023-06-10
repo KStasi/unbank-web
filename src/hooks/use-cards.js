@@ -5,6 +5,10 @@ import getCardDetails from "../venom/get-card-details";
 const useCards = (retailAccountAddress, venomConnect) => {
   const [cards, setCards] = useState([]);
 
+  const onCardCreated = async () => {
+    await fetchCards(venomConnect);
+  };
+
   const fetchCards = async (provider) => {
     if (!provider || !provider.currentProvider || !retailAccountAddress) return;
 
@@ -21,14 +25,13 @@ const useCards = (retailAccountAddress, venomConnect) => {
         return cardDetail;
       })
     );
-    console.log(cardDetails);
     setCards(cardDetails);
   };
 
   useEffect(() => {
     fetchCards(venomConnect);
   }, [retailAccountAddress]);
-  return { cards };
+  return { cards, onCardCreated };
 };
 
 export default useCards;

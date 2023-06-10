@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import AddCardModal from "../modals/add-card";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-function NoCardScreen({ retailAccountAddress, currencies }) {
+function NoCardScreen({ retailAccountAddress, currencies, onCardCreated }) {
   const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
   const handleAddCardModalOpen = () => {
     setAddCardModalOpenned(true);
@@ -50,6 +50,7 @@ function NoCardScreen({ retailAccountAddress, currencies }) {
         Issue immediately ⚡️
       </LoadingButton>
       <AddCardModal
+        onCardCreated={onCardCreated}
         open={addCardModalOpenned}
         handleClose={handleAddCardModalClose}
         currencies={currencies}
