@@ -32,9 +32,11 @@ function Card({
   const handleSendModalOpen = () => setOpenSendModal(true);
   const handleSendModalClose = () => setOpenSendModal(false);
 
-  function handleTopUp() {
-    postTopUp(address.toString(), currencyMetadata.address);
-  }
+  // TODO: add loading logic
+  const handleTopUp = async () => {
+    await postTopUp(address.toString(), currencyMetadata.address);
+  };
+
   return (
     <Badge
       badgeContent={""}
@@ -145,7 +147,7 @@ function Card({
                   Send 👉
                 </Button>
               ) : (
-                <Button
+                <LoadingButton
                   size="small"
                   variant="contained"
                   color="inherit"
@@ -153,7 +155,7 @@ function Card({
                   onClick={handleTopUp}
                 >
                   Top Up 🦄
-                </Button>
+                </LoadingButton>
               )}
               <SendModal
                 open={openSendModal}

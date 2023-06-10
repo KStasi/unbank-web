@@ -85,6 +85,7 @@ function CardsScreen({
           Add Card 🤑
         </LoadingButton>
         <AddCardModal
+          venomConnect={venomConnect}
           open={addCardModalOpenned}
           handleClose={handleAddCardModalClose}
           currencies={currencies}

@@ -12,8 +12,12 @@ import MenuItem from "@mui/material/MenuItem";
 import { CARD_TYPES } from "../constants";
 import LoadingButton from "@mui/lab/LoadingButton";
 import postCreateCard from "../api/post-create-card";
+import { SAVING_CARD_STRUCTURE } from "../constants";
+import toTokenAmount from "../utils/to-token-amount";
+import fromTokenAmount from "../utils/from-token-amount";
 
 function AddCardModal({
+  venomConnect,
   open,
   handleClose,
   currencies,
@@ -24,38 +28,46 @@ function AddCardModal({
   const [cardType, setCardType] = useState(0);
   const [currency, setCurrency] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [targetAmount, setTargetAmount] = useState();
 
   const handleSubmit = useCallback(
     async (event) => {
       setLoading(true);
       event.preventDefault();
-      console.log(
-        retailAccountAddress.toString(),
-        cardType,
-        currencies[currency]
-      );
+      // TODO: prevent creation of the same cards
       try {
         if (
           retailAccountAddress &&
           cardType != undefined &&
           currencies[currency] &&
-          currencies[currency].address
+          currencies[currency].address &&
+          venomConnect &&
+          venomConnect.currentProvider
         ) {
+          const calldata =
+            cardType == 0
+              ? "0x"
+              : (
+                  await venomConnect.currentProvider.packIntoCell({
+                    structure: SAVING_CARD_STRUCTURE,
+                    data: { targetAmount: fromTokenAmount(targetAmount, 9) },
+                  })
+                ).boc;
           await postCreateCard(
             retailAccountAddress,
             cardType,
             currencies[currency].address,
-            ""
+            calldata
           );
           await onCardCreated();
-          // TODO: process saving card
         }
       } catch (error) {
         console.error(error);
       }
       setLoading(false);
+      handleClose();
     },
-    [cardName, currency, cardType, retailAccountAddress]
+    [cardName, currency, cardType, targetAmount, retailAccountAddress]
   );
 
   return (
@@ -131,6 +143,18 @@ function AddCardModal({
                   );
                 })}
               </Select>
+              {cardType == 1 ? (
+                <TextField
+                  id="outlined-basic"
+                  label="Target Amount"
+                  variant="outlined"
+                  size="small"
+                  onChange={(event) => setTargetAmount(event.target.value)}
+                  value={targetAmount}
+                />
+              ) : (
+                <> </>
+              )}
               <LoadingButton
                 variant="outlined"
                 type="submit"
