@@ -2,6 +2,7 @@
   "name": "unbank-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kstasi.github.io/unbank-web",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
