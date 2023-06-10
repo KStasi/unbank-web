@@ -12,7 +12,7 @@ import useCards from "../hooks/use-cards";
 import useCurrencies from "../hooks/use-currencies";
 import useInterval from "../hooks/use-interval";
 
-function UserDashboard({ venomConnect, retailAccountAddress }) {
+function UserDashboard({ venomConnect, retailAccountAddress, userAddress }) {
   const { cards, onCardCreated } = useCards(retailAccountAddress, venomConnect);
   const { currencies } = useCurrencies(venomConnect);
 
@@ -45,6 +45,7 @@ function UserDashboard({ venomConnect, retailAccountAddress }) {
           retailAccountAddress={retailAccountAddress}
           currencies={currencies}
           onCardCreated={onCardCreated}
+          userAddress={userAddress}
         />
       ) : (
         <NoCardScreen

@@ -8,6 +8,7 @@ import useCurrencies from "../hooks/use-currencies";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 function CardsScreen({
+  userAddress,
   cards,
   venomConnect,
   retailAccountAddress,
@@ -63,7 +64,12 @@ function CardsScreen({
             spacing={1}
             sx={{}}
           >
-            <Card {...card} retailAccountAddress={retailAccountAddress} />
+            <Card
+              {...card}
+              retailAccountAddress={retailAccountAddress}
+              venomConnect={venomConnect}
+              userAddress={userAddress}
+            />
           </Grid>
         ))}
       </Grid>

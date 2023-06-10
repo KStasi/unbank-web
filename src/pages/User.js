@@ -32,6 +32,7 @@ function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
           <UserDashboard
             retailAccountAddress={retailAccountAddress}
             venomConnect={venomConnect}
+            userAddress={address}
           />
         ) : (
           <DashboardWithoutAccount

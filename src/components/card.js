@@ -13,6 +13,7 @@ import SendModal from "../modals/send";
 import postTopUp from "../api/post-top-up";
 
 function Card({
+  venomConnect,
   name,
   cardType,
   address,
@@ -24,6 +25,7 @@ function Card({
   amountLeft,
   isActive,
   wallet,
+  userAddress,
   retailAccountAddress,
 }) {
   const [openSendModal, setOpenSendModal] = React.useState(false);
@@ -158,6 +160,9 @@ function Card({
                 handleClose={handleSendModalClose}
                 currencyMetadata={currencyMetadata}
                 retailAccountAddress={retailAccountAddress}
+                venomConnect={venomConnect}
+                userAddress={userAddress}
+                cardAddress={address}
               />
             </Stack>
           </div>

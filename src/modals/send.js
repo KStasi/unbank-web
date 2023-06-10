@@ -7,18 +7,19 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import { CARD_TYPES } from "../constants";
 import LoadingButton from "@mui/lab/LoadingButton";
-import Input from "@mui/material/Input";
+import prepareCardTransferCalldata from "../venom/prepare-card-transfer-calldata";
+import prepareRetailAccountTrx from "../venom/prepare-retail-account-trx";
+import fromTokenAmount from "../utils/from-token-amount";
 
 function SendModal({
+  userAddress,
+  venomConnect,
   open,
+  cardAddress,
   handleClose,
   retailAccountAddress,
   currencyMetadata,
-  cardName,
 }) {
   const [amount, setAmount] = useState();
   const [receiver, setReceiver] = useState();
@@ -26,34 +27,41 @@ function SendModal({
 
   const handleSubmit = useCallback(
     async (event) => {
-      setLoading(true);
       event.preventDefault();
-      // console.log(
-      //   retailAccountAddress.toString(),
-      //   cardType,
-      //   currencies[currency]
-      // );
-      // try {
-      //   if (
-      //     retailAccountAddress &&
-      //     cardType != undefined &&
-      //     currencies[currency] &&
-      //     currencies[currency].address
-      //   ) {
-      //     console.log(
-      //       retailAccountAddress.toString(),
-      //       cardType,
-      //       currencies[currency].address,
-      //       ""
-      //     );
+      if (!venomConnect || !venomConnect.currentProvider) return;
+      setLoading(true);
 
-      //   }
-      // } catch (error) {
-      //   console.error(error);
-      // }
+      try {
+        // TODO: check if receiver address is valid
+        // TODO: check if receiver wallet exists
+        const calldata = await prepareCardTransferCalldata(
+          venomConnect.currentProvider,
+          cardAddress,
+          fromTokenAmount(amount, currencyMetadata.decimals),
+          receiver,
+          "",
+          true
+        );
+        const value = fromTokenAmount(1, 9);
+        const trx = await prepareRetailAccountTrx(
+          venomConnect.currentProvider,
+          retailAccountAddress,
+          cardAddress,
+          value,
+          calldata
+        );
+
+        const res = await trx.send({
+          from: userAddress,
+          amount: value,
+        });
+      } catch (error) {
+        console.error(error);
+      }
       setLoading(false);
+      handleClose();
     },
-    [cardName, retailAccountAddress]
+    [venomConnect, amount, receiver]
   );
 
   return (

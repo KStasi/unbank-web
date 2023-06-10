@@ -1,3 +1,4 @@
+import fromTokenAmount from "./utils/from-token-amount";
 export const AUTO_MANAGER_API = "https://starfish-app-vh8q3.ondigitalocean.app";
 export const NETWORK = "devnet";
 export const CARD_TYPES = {
@@ -5,3 +6,4 @@ export const CARD_TYPES = {
   1: "Saving",
 };
 export const DEFAULT_ANSWER_ID = 0;
+export const DEFAULT_DEPLOY_WALLET_VALUE = fromTokenAmount(0.5, 9);
