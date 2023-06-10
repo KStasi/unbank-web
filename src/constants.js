@@ -1,4 +1,4 @@
-export const AUTO_MANAGER_API = "http://127.0.0.1:3007";
+export const AUTO_MANAGER_API = "https://starfish-app-vh8q3.ondigitalocean.app";
 export const NETWORK = "devnet";
 export const CARD_TYPES = {
   0: "Debit",
