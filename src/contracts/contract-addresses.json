@@ -4,15 +4,15 @@
     "ChiefManager1": "0:25de43ce31e09ab667628049b541e3a4b285a23f3e2c446c35f5af891fecfc42",
     "Manager1": "0:cc0b13c55a8901fd1ed9332be3f6d925cfd309f1997ef3724467680c39342822",
     "RetailAccount1": "0:3c59abd8235cf0554bb8d315b765e4d329bcb95dedbbd1943b545d86ac6896fb",
-    "CBDC1": "0:e2136a92cc05f9a860cddf55bc01f96e904891905fcc1b0dfcb9aa768d6abe31",
-    "CBDC2": "0:ca082f2170a3cf1be7985a57f1817a4fbf65b5097ddec91fd786a8b9fde0d1a8",
-    "CBDC3": "0:e4354e08c6b20ba548a3a34f0eb479d0a6a7b66788fd0879cf75e922525689d8",
-    "ShareTokenRoot": "0:4bf676c27d43d62aa76c488d6a41c32d13eaa14f8008add19a3ff79c466619dd",
-    "ChiefManagerCollection": "0:b946df6f3d87f237e6cb409a16b407b740c64e71016e1d3f3c5e080b1a23d9ed",
-    "ManagerCollection": "0:33d08dbabd7e57d73f31480acd71c801d627d275370ca7af54110a03ccde6e0a",
-    "CardsRegistry": "0:d5e79c9aaddb68a51787905800bf842c668bf3ac74bf540468632bf7a94fc914",
-    "RequestsRegistry": "0:013b63154e424697072f9196491972551cc52bcfa52d22f70b6d566cc67e1e89",
-    "Bank": "0:eface0e35d38ec8b6d5479e4b3f1d5320b71d4be45cf8905eca1a6daf026b748",
-    "RetailAccountFactory": "0:64777fa06a0c6ab789c5173c27bca0444accf794f94262b8ed84e40b9d33ca4d"
+    "CBDC1": "0:9241e3296a2454e14ac0249ba3dc57cb2b5c682ee9288b4c795284abc8a6f162",
+    "CBDC2": "0:78ed0dc773dc79b3810e72843129dfebfb2c8c0954991d377a44936db734c92b",
+    "CBDC3": "0:acdc947094b41c63e3735625c02f2fd1a6edfa30b1e9d39dc56d6c9d8481e6de",
+    "ShareTokenRoot": "0:faf62e7e0f600005b6e5facb46dcc9359a5efed83b812601aebb8b48d6552d3e",
+    "ChiefManagerCollection": "0:a855bdf24561db7d6df19fdd76f4c7e2bc870deca3e0addd7f2d660f2a1d35ee",
+    "ManagerCollection": "0:5db30c491cb8e70169f7cab809c366357ab74b51e49d7ea874b47b0acde3d723",
+    "CardsRegistry": "0:6b7a3a1bef2f43a4cb260d75106ee72e6007c8cf0fb8ff01c9fa3df2469d79dc",
+    "RequestsRegistry": "0:39ce0b73f2420c6e324d3bfa0040816c390f4a458ebf4b79f09db4c456fdc587",
+    "Bank": "0:c0dd6162e808dfef0064a2ad75bb6888fa1345b9af14bdcfc8c2a9f192cda55c",
+    "RetailAccountFactory": "0:0ce8cb82c5abaff478f62e861d29d751f0eeacca7d1c741f04ab8428255ba743"
   }
 }

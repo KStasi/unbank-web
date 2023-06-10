@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddCardModal from "../modals/add-card";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-function NoCardScreen({}) {
+function NoCardScreen({ retailAccountAddress, currencies }) {
+  const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
+  const handleAddCardModalOpen = () => {
+    setAddCardModalOpenned(true);
+  };
+  const handleAddCardModalClose = () => {
+    setAddCardModalOpenned(false);
+  };
+
   return (
     <Grid
       item
@@ -31,9 +40,21 @@ function NoCardScreen({}) {
         <br />
         and haven't created any card yet!
       </Typography>
-      <Button variant="outlined" color="inherit" sx={{}}>
+      <LoadingButton
+        loading={addCardModalOpenned}
+        onClick={handleAddCardModalOpen}
+        variant="outlined"
+        color="inherit"
+        sx={{}}
+      >
         Issue immediately ⚡️
-      </Button>
+      </LoadingButton>
+      <AddCardModal
+        open={addCardModalOpenned}
+        handleClose={handleAddCardModalClose}
+        currencies={currencies}
+        retailAccountAddress={retailAccountAddress}
+      />
     </Grid>
   );
 }

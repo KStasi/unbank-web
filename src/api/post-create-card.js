@@ -6,7 +6,7 @@ const postCreateCard = (
   currency,
   otherCardDetails
 ) => {
-  fetch(`${AUTO_MANAGER_API}//issue-card`, {
+  fetch(`${AUTO_MANAGER_API}/issue-card`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -11,11 +11,51 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { CARD_TYPES } from "../constants";
 import LoadingButton from "@mui/lab/LoadingButton";
+import postCreateCard from "../api/post-create-card";
 
-function AddCardModal({ open, handleClose, currencies }) {
-  const handleSubmit = useCallback(async (event) => {
-    event.preventDefault();
-  }, []);
+function AddCardModal({ open, handleClose, currencies, retailAccountAddress }) {
+  const [cardName, setCardName] = useState("");
+  const [cardType, setCardType] = useState(0);
+  const [currency, setCurrency] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = useCallback(
+    async (event) => {
+      setLoading(true);
+      event.preventDefault();
+      console.log(
+        retailAccountAddress.toString(),
+        cardType,
+        currencies[currency]
+      );
+      try {
+        if (
+          retailAccountAddress &&
+          cardType != undefined &&
+          currencies[currency] &&
+          currencies[currency].address
+        ) {
+          console.log(
+            retailAccountAddress.toString(),
+            cardType,
+            currencies[currency].address,
+            ""
+          );
+          await postCreateCard(
+            retailAccountAddress,
+            cardType,
+            currencies[currency].address,
+            ""
+          );
+          // TODO: process saving card
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      setLoading(false);
+    },
+    [cardName, currency, cardType, retailAccountAddress]
+  );
 
   return (
     <Modal
@@ -57,16 +97,19 @@ function AddCardModal({ open, handleClose, currencies }) {
                 label="Card Name"
                 variant="outlined"
                 size="small"
+                onChange={(event) => setCardName(event.target.value)}
+                value={cardName}
               />
               <Select
                 id={`currency-select`}
-                defaultValue={currencies.length ? currencies[0].symbol : 0}
                 size="small"
                 sx={{ width: "195px", textAlign: "left" }}
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
               >
                 {currencies.map((key, index) => {
                   return (
-                    <MenuItem key={key.symbol} value={key.symbol}>
+                    <MenuItem key={index} value={index}>
                       {key.symbol}
                     </MenuItem>
                   );
@@ -74,19 +117,26 @@ function AddCardModal({ open, handleClose, currencies }) {
               </Select>
               <Select
                 id={`card-type-select`}
-                defaultValue={CARD_TYPES[0]}
                 size="small"
+                value={cardType}
+                onChange={(e) => setCardType(e.target.value)}
                 sx={{ width: "195px", textAlign: "left" }}
               >
                 {Object.values(CARD_TYPES).map((key, index) => {
                   return (
-                    <MenuItem key={key} value={key}>
+                    <MenuItem key={index} value={index}>
                       {key}
                     </MenuItem>
                   );
                 })}
               </Select>
-              <LoadingButton variant="outlined" type="submit" sx={{}}>
+              <LoadingButton
+                variant="outlined"
+                type="submit"
+                color="inherit"
+                loading={loading}
+                sx={{}}
+              >
                 Own It 🤌
               </LoadingButton>
             </Stack>

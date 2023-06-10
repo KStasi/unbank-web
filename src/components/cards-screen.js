@@ -7,7 +7,12 @@ import AddCardModal from "../modals/add-card";
 import useCurrencies from "../hooks/use-currencies";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-function CardsScreen({ cards, venomConnect }) {
+function CardsScreen({
+  cards,
+  venomConnect,
+  retailAccountAddress,
+  currencies,
+}) {
   const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
   const handleAddCardModalOpen = () => {
     setAddCardModalOpenned(true);
@@ -16,7 +21,6 @@ function CardsScreen({ cards, venomConnect }) {
     setAddCardModalOpenned(false);
   };
 
-  const { currencies } = useCurrencies(venomConnect);
   return (
     <Grid
       item
@@ -77,6 +81,7 @@ function CardsScreen({ cards, venomConnect }) {
           open={addCardModalOpenned}
           handleClose={handleAddCardModalClose}
           currencies={currencies}
+          retailAccountAddress={retailAccountAddress}
         />
       </Grid>
     </Grid>

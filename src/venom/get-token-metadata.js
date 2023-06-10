@@ -25,6 +25,7 @@ const getTokenMetadata = async (provider, tokenRootAddress) => {
     name,
     symbol,
     decimals,
+    address: tokenRootAddress.toString(),
   };
 };
 

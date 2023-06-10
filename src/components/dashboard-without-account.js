@@ -9,7 +9,7 @@ function DashboardWithoutAccount({ address }) {
   const [loading, setLoading] = useState(false);
 
   function handleClick() {
-    postCreateAccount(address);
+    postCreateAccount(address.toString());
     setLoading(true);
   }
 
