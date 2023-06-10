@@ -62,7 +62,7 @@ function CardsScreen({
             spacing={1}
             sx={{}}
           >
-            <Card {...card} />
+            <Card {...card} retailAccountAddress={retailAccountAddress} />
           </Grid>
         ))}
       </Grid>

@@ -11,18 +11,17 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { CARD_TYPES } from "../constants";
 import LoadingButton from "@mui/lab/LoadingButton";
-import postCreateCard from "../api/post-create-card";
+import Input from "@mui/material/Input";
 
 function SendModal({
   open,
   handleClose,
-  currencies,
   retailAccountAddress,
-  currency,
+  currencyMetadata,
   cardName,
 }) {
-  const [amount, setAmount] = useState(0);
-  const [receiver, setReceiver] = useState(0);
+  const [amount, setAmount] = useState();
+  const [receiver, setReceiver] = useState();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
@@ -98,7 +97,16 @@ function SendModal({
                 variant="outlined"
                 size="small"
                 onChange={(event) => setReceiver(event.target.value)}
-                value={cardName}
+                value={receiver}
+              />
+              <TextField
+                id="outlined-basic"
+                label={`${currencyMetadata.symbol} Amount`}
+                variant="outlined"
+                type="number"
+                size="small"
+                onChange={(event) => setAmount(event.target.value)}
+                value={amount}
               />
 
               <LoadingButton

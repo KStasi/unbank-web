@@ -8,6 +8,8 @@ import NorthEastIcon from "@mui/icons-material/NorthEast";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import shortifyAddress from "../utils/shortify-address";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SendModal from "../modals/send";
 
 function Card({
   name,
@@ -21,7 +23,11 @@ function Card({
   amountLeft,
   isActive,
   wallet,
+  retailAccountAddress,
 }) {
+  const [openSendModal, setOpenSendModal] = React.useState(false);
+  const handleSendModalOpen = () => setOpenSendModal(true);
+  const handleSendModalClose = () => setOpenSendModal(false);
   return (
     <Badge
       badgeContent={""}
@@ -126,12 +132,16 @@ function Card({
                 variant="contained"
                 color="inherit"
                 disableElevation="true"
+                onClick={handleSendModalOpen}
               >
                 Send 👉
               </Button>
-              {/* <IconButton aria-label="send" size="small">
-                <NorthEastIcon fontSize="small" />
-              </IconButton>  */}
+              <SendModal
+                open={openSendModal}
+                handleClose={handleSendModalClose}
+                currencyMetadata={currencyMetadata}
+                retailAccountAddress={retailAccountAddress}
+              />
             </Stack>
           </div>
         </Stack>
