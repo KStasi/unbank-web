@@ -5,13 +5,15 @@ import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import postCreateAccount from "../api/post-create-account";
 
-function DashboardWithoutAccount({ address }) {
+function DashboardWithoutAccount({ address, onCreateAccount }) {
   const [loading, setLoading] = useState(false);
 
-  function handleClick() {
-    postCreateAccount(address.toString());
+  const handleClick = async () => {
     setLoading(true);
-  }
+    await postCreateAccount(address.toString());
+    await onCreateAccount();
+    setLoading(false);
+  };
 
   return (
     <Grid

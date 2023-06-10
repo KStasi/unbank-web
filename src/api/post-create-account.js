@@ -1,7 +1,7 @@
 import { AUTO_MANAGER_API } from "../constants";
 
-const postCreateAccount = (userAddress) => {
-  fetch(`${AUTO_MANAGER_API}/create-account`, {
+const postCreateAccount = async (userAddress) => {
+  const response = await fetch(`${AUTO_MANAGER_API}/create-account`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -9,10 +9,9 @@ const postCreateAccount = (userAddress) => {
     body: JSON.stringify({
       userAddress,
     }),
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error("Error:", error));
+  });
+  const data = await response.json();
+  return data;
 };
 
 export default postCreateAccount;

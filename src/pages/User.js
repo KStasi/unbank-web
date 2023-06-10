@@ -11,7 +11,10 @@ import useRetailAddress from "../hooks/use-retail-address";
 import useRetailAddressInitiated from "../hooks/use-retail-address-initiated";
 
 function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
-  const { retailAccountAddress } = useRetailAddress(address, venomConnect);
+  const { retailAccountAddress, onCreateAccount } = useRetailAddress(
+    address,
+    venomConnect
+  );
   const { retailAccountInitiated } = useRetailAddressInitiated(
     retailAccountAddress,
     venomConnect
@@ -31,7 +34,10 @@ function UserPage({ onDisconnect, onLogin, address, venomConnect }) {
             venomConnect={venomConnect}
           />
         ) : (
-          <DashboardWithoutAccount address={address} />
+          <DashboardWithoutAccount
+            address={address}
+            onCreateAccount={onCreateAccount}
+          />
         )}
       </Stack>
     </>
