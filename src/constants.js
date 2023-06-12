@@ -5,6 +5,10 @@ export const CARD_TYPES = {
   0: "Debit",
   1: "Saving",
 };
+export const PERIOD_TYPES = {
+  DAY: 24 * 60 * 60,
+  MONTH: 30 * 24 * 60 * 60,
+};
 export const DEFAULT_ANSWER_ID = 0;
 export const DEFAULT_DEPLOY_WALLET_VALUE = fromTokenAmount(0.5, 9);
 export const SAVING_CARD_STRUCTURE = [

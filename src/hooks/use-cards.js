@@ -25,7 +25,9 @@ const useCards = (retailAccountAddress, venomConnect) => {
         return cardDetail;
       })
     );
-    setCards(cardDetails);
+    if (JSON.stringify(cardDetails) != JSON.stringify(cards)) {
+      setCards(cardDetails);
+    }
   };
 
   useEffect(() => {

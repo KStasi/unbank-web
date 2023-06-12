@@ -8,6 +8,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import shortifyAddress from "../utils/shortify-address";
+import findKeyByValue from "../utils/find-key-by-value";
+import { PERIOD_TYPES } from "../constants";
 
 function Autopayment({ id, type, from, to, amount, symbol, period }) {
   return (
@@ -54,7 +56,8 @@ function Autopayment({ id, type, from, to, amount, symbol, period }) {
               Amount:
             </Typography>
             <Typography variant="subtitle2" component="div">
-              {amount} {symbol} / {period}
+              {amount} {symbol} /{" "}
+              {findKeyByValue(PERIOD_TYPES, parseInt(period))}
             </Typography>
           </Stack>
         </Stack>

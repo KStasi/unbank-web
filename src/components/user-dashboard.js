@@ -20,7 +20,6 @@ function UserDashboard({ venomConnect, retailAccountAddress, userAddress }) {
     venomConnect,
     cards
   );
-  console.log(autopayments);
   const { currencies } = useCurrencies(venomConnect);
 
   useInterval(onCardCreated);

@@ -31,8 +31,6 @@ function AutomaticPaymentScreen({
       container
       direction="column"
       sx={{
-        // backgroundColor: "#011132",
-        // height: "100vh",
         align: "center",
         alignContent: "center",
         paddingTop: "1%",
@@ -43,14 +41,7 @@ function AutomaticPaymentScreen({
           Autopayments
         </Typography>
       </Grid>
-      <Grid
-        item
-        spacing={1}
-        direction="column"
-        // sx={{
-        //   width: "inherit",
-        // }}
-      >
+      <Grid item spacing={1} direction="column">
         <Stack direction="column" spacing={1}>
           {autopayments.map((autopayment, index) => (
             <Autopayment {...autopayment} />

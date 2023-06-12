@@ -24,7 +24,6 @@ function AddCardModal({
   retailAccountAddress,
   onCardCreated,
 }) {
-  const [cardName, setCardName] = useState("");
   const [cardType, setCardType] = useState(0);
   const [currency, setCurrency] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -69,7 +68,6 @@ function AddCardModal({
     },
     [
       venomConnect,
-      cardName,
       currencies,
       currency,
       cardType,
@@ -113,14 +111,6 @@ function AddCardModal({
               alignItems="center"
               sx={{ mt: 2 }}
             >
-              <TextField
-                id="outlined-basic"
-                label="Card Name"
-                variant="outlined"
-                size="small"
-                onChange={(event) => setCardName(event.target.value)}
-                value={cardName}
-              />
               <Select
                 id={`currency-select`}
                 size="small"
@@ -157,6 +147,7 @@ function AddCardModal({
                   label="Target Amount"
                   variant="outlined"
                   size="small"
+                  type="number"
                   onChange={(event) => setTargetAmount(event.target.value)}
                   value={targetAmount}
                 />

@@ -16,20 +16,11 @@ const useAutopayments = (retailAccountAddress, venomConnect, cards) => {
       provider.currentProvider,
       retailAccountAddress
     );
-
-    // {
-    //   id: "1",
-    //   from: "Card 1",
-    //   to: "Card 2",
-    //   amount: "100",
-    //   symbol: "veUSD",
-    //   period: "day",
-    // },
-    console.log(fetchedAutopayments);
     const autopaymentsDetails = fetchedAutopayments.map((autopayment, id) => {
       const card = Object.values(cards).find(
         (card) => card.address === autopayment.cardFrom.toString()
       );
+      if (!card) return null;
       return {
         id: id,
         from: card.name,
@@ -42,8 +33,16 @@ const useAutopayments = (retailAccountAddress, venomConnect, cards) => {
         period: autopayment.period.toString(),
       };
     });
-    console.log("autopaymentsDetails", autopaymentsDetails);
-    setAutopayments(autopaymentsDetails);
+    const filteredAutopaymentDetails = autopaymentsDetails.filter(
+      (autopayment) => autopayment !== null
+    );
+    if (
+      JSON.stringify(filteredAutopaymentDetails) != JSON.stringify(autopayments)
+    ) {
+      setAutopayments(
+        autopaymentsDetails.filter((autopayment) => autopayment !== null)
+      );
+    }
   };
 
   useEffect(() => {

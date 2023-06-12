@@ -34,6 +34,14 @@ function SendModal({
       try {
         // TODO: check if receiver address is valid
         // TODO: check if receiver wallet exists
+        console.log(
+          venomConnect.currentProvider,
+          cardAddress,
+          fromTokenAmount(amount, currencyMetadata.decimals),
+          receiver,
+          "",
+          true
+        );
         const calldata = await prepareCardTransferCalldata(
           venomConnect.currentProvider,
           cardAddress,
@@ -47,7 +55,7 @@ function SendModal({
           venomConnect.currentProvider,
           retailAccountAddress,
           cardAddress,
-          value,
+          0,
           calldata
         );
 

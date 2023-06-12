@@ -31,10 +31,17 @@ function Card({
   const [openSendModal, setOpenSendModal] = React.useState(false);
   const handleSendModalOpen = () => setOpenSendModal(true);
   const handleSendModalClose = () => setOpenSendModal(false);
+  const [loading, setLoading] = React.useState(false);
 
   // TODO: add loading logic
   const handleTopUp = async () => {
-    await postTopUp(address.toString(), currencyMetadata.address);
+    setLoading(true);
+    try {
+      await postTopUp(address.toString(), currencyMetadata.address);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
   };
 
   return (
@@ -152,6 +159,7 @@ function Card({
                   variant="contained"
                   color="inherit"
                   disableElevation="true"
+                  loading={loading}
                   onClick={handleTopUp}
                 >
                   Top Up 🦄

@@ -9,11 +9,10 @@ import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Select from "@mui/material/Select";
-import prepareCardTransferCalldata from "../venom/prepare-card-transfer-calldata";
-import prepareRetailAccountTrx from "../venom/prepare-retail-account-trx";
 import prepareCreateAutopaymentTrx from "../venom/prepare-create-autopayment-trx";
 import fromTokenAmount from "../utils/from-token-amount";
 import MenuItem from "@mui/material/MenuItem";
+import { PERIOD_TYPES, CARD_TYPES } from "../constants";
 
 function AddAutopaymentModal({
   userAddress,
@@ -24,9 +23,11 @@ function AddAutopaymentModal({
   onAutopaymentCreated,
   cards,
 }) {
+  const availableCards = cards.filter((card) => card.cardType != CARD_TYPES[1]);
+
   const [cardFrom, setCardFrom] = useState(0);
   const [receiver, setReceiver] = useState();
-  const [period, setPeriod] = useState();
+  const [period, setPeriod] = useState(PERIOD_TYPES[0]);
   const [amount, setAmount] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -37,15 +38,17 @@ function AddAutopaymentModal({
       setLoading(true);
 
       try {
-        console.log(userAddress);
         // TODO: check if receiver address is valid
         const trx = await prepareCreateAutopaymentTrx(
           venomConnect.currentProvider,
           retailAccountAddress.toString(),
-          cards[cardFrom].address,
+          availableCards[cardFrom].address,
           receiver,
-          fromTokenAmount(amount, cards[cardFrom].currencyMetadata.decimals),
-          period
+          fromTokenAmount(
+            amount,
+            availableCards[cardFrom].currencyMetadata.decimals
+          ),
+          PERIOD_TYPES[period]
         );
 
         const res = await trx.send({
@@ -105,7 +108,7 @@ function AddAutopaymentModal({
                 onChange={(e) => setCardFrom(e.target.value)}
                 sx={{ width: "195px", textAlign: "left" }}
               >
-                {Object.values(cards).map((key, index) => {
+                {Object.values(availableCards).map((key, index) => {
                   return (
                     <MenuItem key={index} value={index}>
                       {key.name}
@@ -129,18 +132,33 @@ function AddAutopaymentModal({
                 onChange={(event) => setReceiver(event.target.value)}
                 value={receiver}
               />
-              {cards[cardFrom] != undefined && (
+              {availableCards[cardFrom] != undefined && (
                 <>
                   <TextField
                     id="outlined-basic"
-                    label={`${cards[cardFrom].currencyMetadata.symbol} Amount`}
+                    label={`${availableCards[cardFrom].currencyMetadata.symbol} Amount`}
                     variant="outlined"
                     type="number"
                     size="small"
                     onChange={(event) => setAmount(event.target.value)}
                     value={amount}
                   />
-                  <TextField
+                  <Select
+                    id={`period-type-select`}
+                    size="small"
+                    value={period}
+                    onChange={(e) => setPeriod(e.target.value)}
+                    sx={{ width: "195px", textAlign: "left" }}
+                  >
+                    {Object.keys(PERIOD_TYPES).map((key, index) => {
+                      return (
+                        <MenuItem key={index} value={key}>
+                          {key}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                  {/* <TextField
                     id="outlined-basic"
                     label="Period (Seconds)"
                     variant="outlined"
@@ -148,7 +166,7 @@ function AddAutopaymentModal({
                     type="number"
                     onChange={(event) => setPeriod(event.target.value)}
                     value={period}
-                  />
+                  /> */}
                 </>
               )}
 
