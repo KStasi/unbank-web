@@ -149,6 +149,7 @@ function Card({
                   variant="contained"
                   color="inherit"
                   disableElevation="true"
+                  disabled={cardType.toLowerCase() != "debit" && amountLeft > 0}
                   onClick={handleSendModalOpen}
                 >
                   Send 👉
