@@ -63,6 +63,22 @@
 			]
 		},
 		{
+			"name": "addAutopayment",
+			"inputs": [
+				{"components":[{"name":"cardFrom","type":"address"},{"name":"receiver","type":"address"},{"name":"amount","type":"uint128"},{"name":"period","type":"uint32"},{"name":"nextPayment","type":"uint32"}],"name":"autopayment","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "cancelAutopayment",
+			"inputs": [
+				{"name":"autopaymentId","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "setAccountActivation",
 			"inputs": [
 				{"name":"isActive","type":"bool"}
@@ -112,6 +128,14 @@
 			],
 			"outputs": [
 				{"name":"_cards","type":"map(address,bool)"}
+			]
+		},
+		{
+			"name": "_autopayments",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"cardFrom","type":"address"},{"name":"receiver","type":"address"},{"name":"amount","type":"uint128"},{"name":"period","type":"uint32"},{"name":"nextPayment","type":"uint32"}],"name":"_autopayments","type":"tuple[]"}
 			]
 		},
 		{
@@ -168,6 +192,7 @@
 		{"name":"_ownerPublicKey","type":"optional(uint256)"},
 		{"name":"_ownerAddress","type":"optional(address)"},
 		{"name":"_cards","type":"map(address,bool)"},
+		{"components":[{"name":"cardFrom","type":"address"},{"name":"receiver","type":"address"},{"name":"amount","type":"uint128"},{"name":"period","type":"uint32"},{"name":"nextPayment","type":"uint32"}],"name":"_autopayments","type":"tuple[]"},
 		{"name":"_isActive","type":"bool"},
 		{"name":"_cardsRegistry","type":"address"},
 		{"name":"_requestsRegistry","type":"address"},

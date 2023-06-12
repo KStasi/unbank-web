@@ -52,6 +52,7 @@ function UserDashboard({ venomConnect, retailAccountAddress, userAddress }) {
           onCardCreated={onCardCreated}
           retailAccountAddress={retailAccountAddress}
           currencies={currencies}
+          venomConnect={venomConnect}
         />
       )}
       {cards.length ? (

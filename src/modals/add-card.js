@@ -39,14 +39,14 @@ function AddCardModal({
         if (
           retailAccountAddress &&
           cardType != undefined &&
-          currencies[currency] &&
-          currencies[currency].address &&
+          currencies[currency] != undefined &&
+          currencies[currency].address != undefined &&
           venomConnect &&
           venomConnect.currentProvider
         ) {
           const calldata =
             cardType == 0
-              ? "0x"
+              ? ""
               : (
                   await venomConnect.currentProvider.packIntoCell({
                     structure: SAVING_CARD_STRUCTURE,
@@ -67,7 +67,15 @@ function AddCardModal({
       setLoading(false);
       handleClose();
     },
-    [cardName, currency, cardType, targetAmount, retailAccountAddress]
+    [
+      venomConnect,
+      cardName,
+      currencies,
+      currency,
+      cardType,
+      targetAmount,
+      retailAccountAddress,
+    ]
   );
 
   return (

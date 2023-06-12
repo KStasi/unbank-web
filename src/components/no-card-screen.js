@@ -5,7 +5,12 @@ import Typography from "@mui/material/Typography";
 import AddCardModal from "../modals/add-card";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-function NoCardScreen({ retailAccountAddress, currencies, onCardCreated }) {
+function NoCardScreen({
+  retailAccountAddress,
+  currencies,
+  onCardCreated,
+  venomConnect,
+}) {
   const [addCardModalOpenned, setAddCardModalOpenned] = useState(false);
   const handleAddCardModalOpen = () => {
     setAddCardModalOpenned(true);
@@ -55,6 +60,7 @@ function NoCardScreen({ retailAccountAddress, currencies, onCardCreated }) {
         handleClose={handleAddCardModalClose}
         currencies={currencies}
         retailAccountAddress={retailAccountAddress}
+        venomConnect={venomConnect}
       />
     </Grid>
   );

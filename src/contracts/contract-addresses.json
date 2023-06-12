@@ -4,15 +4,15 @@
     "ChiefManager1": "0:25de43ce31e09ab667628049b541e3a4b285a23f3e2c446c35f5af891fecfc42",
     "Manager1": "0:cc0b13c55a8901fd1ed9332be3f6d925cfd309f1997ef3724467680c39342822",
     "RetailAccount1": "0:3c59abd8235cf0554bb8d315b765e4d329bcb95dedbbd1943b545d86ac6896fb",
-    "CBDC1": "0:9241e3296a2454e14ac0249ba3dc57cb2b5c682ee9288b4c795284abc8a6f162",
-    "CBDC2": "0:78ed0dc773dc79b3810e72843129dfebfb2c8c0954991d377a44936db734c92b",
-    "CBDC3": "0:acdc947094b41c63e3735625c02f2fd1a6edfa30b1e9d39dc56d6c9d8481e6de",
-    "ShareTokenRoot": "0:faf62e7e0f600005b6e5facb46dcc9359a5efed83b812601aebb8b48d6552d3e",
-    "ChiefManagerCollection": "0:a855bdf24561db7d6df19fdd76f4c7e2bc870deca3e0addd7f2d660f2a1d35ee",
-    "ManagerCollection": "0:5db30c491cb8e70169f7cab809c366357ab74b51e49d7ea874b47b0acde3d723",
-    "CardsRegistry": "0:6b7a3a1bef2f43a4cb260d75106ee72e6007c8cf0fb8ff01c9fa3df2469d79dc",
-    "RequestsRegistry": "0:39ce0b73f2420c6e324d3bfa0040816c390f4a458ebf4b79f09db4c456fdc587",
-    "Bank": "0:c0dd6162e808dfef0064a2ad75bb6888fa1345b9af14bdcfc8c2a9f192cda55c",
-    "RetailAccountFactory": "0:0ce8cb82c5abaff478f62e861d29d751f0eeacca7d1c741f04ab8428255ba743"
+    "CBDC1": "0:bac34141f241ee0898a8ad8f98008af6b70b48c339b3d8a45508281847a9e987",
+    "CBDC2": "0:c302eb8b3bf14115ae7758c26cbc6bf0d89331c8f7ea46bcc52d4cace87591af",
+    "CBDC3": "0:001713a33c677dc63689f109ca292f691da458314d6c075fca67391a538b8665",
+    "ShareTokenRoot": "0:2ca323d25af4c7a537f88e8e98991b2f16b985bc386df1b43c85f8808a473be0",
+    "ChiefManagerCollection": "0:96491b25b033f570ce3edc63a2ff7708487ecf7ad89b1243f038bce40a6ec7d1",
+    "ManagerCollection": "0:4389a232e7f87558526c848f495655962752f49b0e18c1665b525c8c3b3e5603",
+    "CardsRegistry": "0:2b3f6b66afdc8c5e136fa93b825f4d9e6b834e61491c8eddd016e3292123bcce",
+    "RequestsRegistry": "0:d0f7241fb9ea27b3e0c18f3f98216c42f76da9bb73fec2f7c6f9b4c3d7e33366",
+    "Bank": "0:653d0afdb9763cd2872547bd8555c137346e9c646602a2a26da06780b4897cae",
+    "RetailAccountFactory": "0:de33f20625a589ec605c188ccac383e9808be0d76de51c3956bd513db08b61e5"
   }
 }

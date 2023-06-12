@@ -1,5 +1,5 @@
 import fromTokenAmount from "./utils/from-token-amount";
-export const AUTO_MANAGER_API = "https://starfish-app-vh8q3.ondigitalocean.app";
+export const AUTO_MANAGER_API = "http://localhost:3007";
 export const NETWORK = "devnet";
 export const CARD_TYPES = {
   0: "Debit",
