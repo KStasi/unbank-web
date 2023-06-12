@@ -150,6 +150,7 @@ function AddCardModal({
                   type="number"
                   onChange={(event) => setTargetAmount(event.target.value)}
                   value={targetAmount}
+                  autoComplete="off"
                 />
               ) : (
                 <> </>

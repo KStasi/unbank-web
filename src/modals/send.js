@@ -34,14 +34,6 @@ function SendModal({
       try {
         // TODO: check if receiver address is valid
         // TODO: check if receiver wallet exists
-        console.log(
-          venomConnect.currentProvider,
-          cardAddress,
-          fromTokenAmount(amount, currencyMetadata.decimals),
-          receiver,
-          "",
-          true
-        );
         const calldata = await prepareCardTransferCalldata(
           venomConnect.currentProvider,
           cardAddress,
@@ -114,6 +106,7 @@ function SendModal({
                 size="small"
                 onChange={(event) => setReceiver(event.target.value)}
                 value={receiver}
+                autoComplete="off"
               />
               <TextField
                 id="outlined-basic"
@@ -123,6 +116,7 @@ function SendModal({
                 size="small"
                 onChange={(event) => setAmount(event.target.value)}
                 value={amount}
+                autoComplete="off"
               />
 
               <LoadingButton

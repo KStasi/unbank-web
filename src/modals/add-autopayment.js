@@ -131,6 +131,7 @@ function AddAutopaymentModal({
                 size="small"
                 onChange={(event) => setReceiver(event.target.value)}
                 value={receiver}
+                autoComplete="off"
               />
               {availableCards[cardFrom] != undefined && (
                 <>
@@ -142,6 +143,7 @@ function AddAutopaymentModal({
                     size="small"
                     onChange={(event) => setAmount(event.target.value)}
                     value={amount}
+                    autoComplete="off"
                   />
                   <Select
                     id={`period-type-select`}
