@@ -7,6 +7,7 @@ import Badge from "@mui/material/Badge";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
+import shortifyAddress from "../utils/shortify-address";
 
 function Autopayment({ id, type, from, to, amount, symbol, period }) {
   return (
@@ -45,7 +46,7 @@ function Autopayment({ id, type, from, to, amount, symbol, period }) {
               To:
             </Typography>
             <Typography variant="subtitle2" component="div">
-              {to}
+              {shortifyAddress(to)}
             </Typography>
           </Stack>
           <Stack direction="row" spacing={2} justifyContent="space-between">

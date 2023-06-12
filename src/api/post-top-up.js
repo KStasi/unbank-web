@@ -1,7 +1,6 @@
 import { AUTO_MANAGER_API } from "../constants";
 
 const postTopUp = (cardAddress, currency) => {
-  console.log("postTopUp", cardAddress, currency);
   fetch(`${AUTO_MANAGER_API}/top-up`, {
     method: "POST",
     headers: {

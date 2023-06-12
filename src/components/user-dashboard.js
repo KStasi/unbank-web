@@ -9,33 +9,23 @@ import NoCardScreen from "./no-card-screen";
 import NoAutomaticPaymentScreen from "./no-automatic-payment-screen";
 import AutomaticPaymentScreen from "./automatic-payment-screen";
 import useCards from "../hooks/use-cards";
+import useAutopayments from "../hooks/use-autopayments";
 import useCurrencies from "../hooks/use-currencies";
 import useInterval from "../hooks/use-interval";
 
 function UserDashboard({ venomConnect, retailAccountAddress, userAddress }) {
   const { cards, onCardCreated } = useCards(retailAccountAddress, venomConnect);
+  const { autopayments, onAutopaymentCreated } = useAutopayments(
+    retailAccountAddress,
+    venomConnect,
+    cards
+  );
+  console.log(autopayments);
   const { currencies } = useCurrencies(venomConnect);
 
   useInterval(onCardCreated);
+  useInterval(onAutopaymentCreated);
 
-  const autopayments = [
-    {
-      id: "1",
-      from: "Card 1",
-      to: "Card 2",
-      amount: "100",
-      symbol: "veUSD",
-      period: "day",
-    },
-    {
-      id: "2",
-      from: "Card 1",
-      to: "Card 2",
-      amount: "1",
-      symbol: "veUSD",
-      period: "month",
-    },
-  ];
   return (
     <Grid container spacing={0} direction="row">
       {cards.length ? (
@@ -56,7 +46,14 @@ function UserDashboard({ venomConnect, retailAccountAddress, userAddress }) {
         />
       )}
       {cards.length ? (
-        <AutomaticPaymentScreen autopayments={autopayments} />
+        <AutomaticPaymentScreen
+          userAddress={userAddress}
+          autopayments={autopayments}
+          venomConnect={venomConnect}
+          retailAccountAddress={retailAccountAddress}
+          onAutopaymentCreated={onAutopaymentCreated}
+          cards={cards}
+        />
       ) : (
         <NoAutomaticPaymentScreen />
       )}

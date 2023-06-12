@@ -10,7 +10,6 @@ import { CARD_TYPES, DEFAULT_ANSWER_ID } from "../constants";
 const getCardDetails = async (provider, cardAddress) => {
   const cardContract = new provider.Contract(baseCardAbi, cardAddress);
 
-  const name = "Card 1";
   const cardType = (await cardContract.methods._cardType({}).call())._cardType;
   const currency = (await cardContract.methods._currency({}).call())._currency;
   const isActive = (await cardContract.methods._isActive({}).call())._isActive;
@@ -24,6 +23,7 @@ const getCardDetails = async (provider, cardAddress) => {
   ).value0;
 
   const currencyMetadata = await getTokenMetadata(provider, currency);
+  const name = `${currencyMetadata.symbol} ${CARD_TYPES[cardType]} Card`;
 
   const cardDetails = {
     cardType: CARD_TYPES[cardType],

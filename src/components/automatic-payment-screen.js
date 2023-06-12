@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Stack, Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Autopayment from "./autopayment";
+import AddAutopaymentModal from "../modals/add-autopayment";
+import LoadingButton from "@mui/lab/LoadingButton";
 
-function AutomaticPaymentScreen({ autopayments }) {
+function AutomaticPaymentScreen({
+  autopayments,
+  venomConnect,
+  retailAccountAddress,
+  onAutopaymentCreated,
+  cards,
+  userAddress,
+}) {
+  const [addAutopamentModalOpenned, setAddAutopaymentModalOpenned] =
+    useState(false);
+  const handleAddAutopaymentModalOpen = () => {
+    setAddAutopaymentModalOpenned(true);
+  };
+  const handleAddAutopaymentModalClose = () => {
+    setAddAutopaymentModalOpenned(false);
+  };
+
   return (
     <Grid
       item
@@ -41,9 +59,23 @@ function AutomaticPaymentScreen({ autopayments }) {
       </Grid>
       <br />
       <Grid item>
-        <Button variant="outlined" color="inherit" sx={{ width: "100%" }}>
+        <LoadingButton
+          variant="outlined"
+          color="inherit"
+          onClick={handleAddAutopaymentModalOpen}
+          sx={{ width: "100%" }}
+        >
           Add Autopayment 🔁
-        </Button>
+        </LoadingButton>
+        <AddAutopaymentModal
+          userAddress={userAddress}
+          venomConnect={venomConnect}
+          open={addAutopamentModalOpenned}
+          handleClose={handleAddAutopaymentModalClose}
+          cards={cards}
+          retailAccountAddress={retailAccountAddress}
+          onAutopaymentCreated={onAutopaymentCreated}
+        />
       </Grid>
     </Grid>
   );
