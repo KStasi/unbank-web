@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Grid } from "@mui/material";
-import WelcomeContainer from "../layout/welcome-container";
-import WelcomeHeader from "../components/welcome-header";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import UserPage from "./User";
-import WelcomePage from "./Welcome";
 
 function MainPage({ venomConnect }) {
-  const [role, setRole] = useState();
   const [venomProvider, setVenomProvider] = useState();
   const [standaloneProvider, setStandAloneProvider] = useState();
   const [address, setAddress] = useState();
@@ -63,18 +56,12 @@ function MainPage({ venomConnect }) {
 
   return (
     <>
-      {role ? (
-        role == "user" && (
-          <UserPage
-            onLogin={onLogin}
-            onDisconnect={onDisconnect}
-            address={address}
-            venomConnect={venomConnect}
-          />
-        )
-      ) : (
-        <WelcomePage setRole={setRole} />
-      )}
+      <UserPage
+        onLogin={onLogin}
+        onDisconnect={onDisconnect}
+        address={address}
+        venomConnect={venomConnect}
+      />
     </>
   );
 }
